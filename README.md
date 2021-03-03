@@ -1,6 +1,7 @@
 # skinsteal
 
 ### steal everyone on the servers skin
+### ❤️ to gophertunnel for being awesome
 ### https://streamable.com/7niuie
 
 ### to setup: <br>
