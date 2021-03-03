@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"github.com/sandertv/gophertunnel/minecraft"
 	"github.com/sandertv/gophertunnel/minecraft/auth"
@@ -30,16 +31,17 @@ func CapeToRGBA(s protocol.Skin) *image.RGBA {
 }
 
 func main() {
-	fmt.Print("Server IP: ")
-	_, _ = fmt.Scanln(&ip)
-	fmt.Print("Server Port: ")
-	_, _ = fmt.Scanln(&port)
+	flag.StringVar(&ip, "ip", "127.0.0.1", "Servers IP Address")
+	flag.StringVar(&port, "port", "19132", "Servers Port")
+	flag.Parse()
 	_ = os.Mkdir("stolen", 0755)
-	dialer := minecraft.Dialer{
+
+	dialer := minecraft.Dialer {
 		TokenSource: auth.TokenSource,
 	}
 
 	address := ip + ":" + port
+	fmt.Println("Connecting to " + address)
 	conn, err := dialer.Dial("raknet", address)
 	if err != nil {
 		panic(err)

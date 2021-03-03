@@ -5,8 +5,8 @@
 ### https://streamable.com/7niuie
 
 ### to setup: <br>
-- go build src/main.go
-- run main.exe
-- type in server ip
-- type in server port 
-- go to microsoft.com/link and enter in your code
+- build main.go
+- run output binary from the command line, use flags to specify your choice<br>
+  e.g ```main.exe -ip=geo.hivebedrock.network -port=19132```<br>
+  IP defaults to 127.0.0.1 and PORT defaults to 19132 if not specfied
+
