@@ -73,10 +73,5 @@ func main() {
 				}
 			}()
 		}
-
-		p := &packet.RequestChunkRadius{ChunkRadius: 32}
-		if err := conn.WritePacket(p); err != nil {
-			break
-		}
 	}
 }
