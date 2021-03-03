@@ -5,7 +5,7 @@
 ### https://streamable.com/7niuie
 
 ### to setup: <br>
-- go build src/main.go
+- build main.go
 - run main.exe
 - type in server ip
 - type in server port 
