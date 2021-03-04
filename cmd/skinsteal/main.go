@@ -30,6 +30,14 @@ func CapeToRGBA(s protocol.Skin) *image.RGBA {
 	return t
 }
 
+func antiCrash(p protocol.PlayerListEntry) bool {
+	if p.Skin.SkinData == nil {
+		return true
+	} else {
+		return false
+	}
+}
+
 func main() {
 	flag.StringVar(&ip, "ip", "127.0.0.1", "Servers IP Address")
 	flag.StringVar(&port, "port", "19132", "Servers Port")
@@ -60,6 +68,9 @@ func main() {
 		case *packet.PlayerList:
 			go func() {
 				for _, player := range p.Entries {
+					if antiCrash(player) {
+						return
+					}
 					name := player.Username
 					skin := SkinToRGBA(player.Skin)
 					cape := CapeToRGBA(player.Skin)
