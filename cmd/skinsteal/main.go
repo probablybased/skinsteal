@@ -10,6 +10,7 @@ import (
 	"image"
 	"image/png"
 	"os"
+	"io/ioutil"
 )
 
 var (
@@ -78,6 +79,7 @@ func main() {
 					_ = os.Mkdir(fmt.Sprintf("%s\\stolen\\%s", path, name), 0755)
 					fileSkin, _ := os.Create(fmt.Sprintf("%s\\stolen\\%s\\skin.png", path, name))
 					fileCape, _ := os.Create(fmt.Sprintf("%s\\stolen\\%s\\cape.png", path, name))
+					_ = ioutil.WriteFile(fmt.Sprintf("%s\\stolen\\%s\\geometry.json", path, name), player.Skin.SkinGeometry, 0644)
 					_ = png.Encode(fileSkin, skin)
 					_ = png.Encode(fileCape, cape)
 					fileSkin.Close()
