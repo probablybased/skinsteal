@@ -10,6 +10,7 @@ import (
 	"image"
 	"image/png"
 	"os"
+	"io/ioutil"
 )
 
 var (
@@ -19,6 +20,12 @@ var (
 
 // ty TwistedAsylum in the gophertunnel discord
 func SkinToRGBA(s protocol.Skin) *image.RGBA {
+	t := image.NewRGBA(image.Rect(0, 0, int(s.SkinImageWidth), int(s.SkinImageHeight)))
+	t.Pix = s.SkinData
+	return t
+}
+
+func GeometryToJson(s protocol.Skin) *image.RGBA {
 	t := image.NewRGBA(image.Rect(0, 0, int(s.SkinImageWidth), int(s.SkinImageHeight)))
 	t.Pix = s.SkinData
 	return t
@@ -78,6 +85,7 @@ func main() {
 					_ = os.Mkdir(fmt.Sprintf("%s\\stolen\\%s", path, name), 0755)
 					fileSkin, _ := os.Create(fmt.Sprintf("%s\\stolen\\%s\\skin.png", path, name))
 					fileCape, _ := os.Create(fmt.Sprintf("%s\\stolen\\%s\\cape.png", path, name))
+					_ = ioutil.WriteFile(fmt.Sprintf("%s\\stolen\\%s\\geometry.json", path, name), player.Skin.SkinGeometry, 0644)
 					_ = png.Encode(fileSkin, skin)
 					_ = png.Encode(fileCape, cape)
 					fileSkin.Close()
