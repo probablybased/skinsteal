@@ -25,12 +25,6 @@ func SkinToRGBA(s protocol.Skin) *image.RGBA {
 	return t
 }
 
-func GeometryToJson(s protocol.Skin) *image.RGBA {
-	t := image.NewRGBA(image.Rect(0, 0, int(s.SkinImageWidth), int(s.SkinImageHeight)))
-	t.Pix = s.SkinData
-	return t
-}
-
 func CapeToRGBA(s protocol.Skin) *image.RGBA {
 	t := image.NewRGBA(image.Rect(0, 0, int(s.CapeImageWidth), int(s.CapeImageHeight)))
 	t.Pix = s.CapeData
